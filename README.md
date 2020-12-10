@@ -7,6 +7,7 @@ This project is made for vertis.se
 This site is going to represent a few design concepts.
 
 ### npms used in this project
+```
 react 
 react-dom
 react-router-dom 
@@ -14,6 +15,7 @@ react-scripts
 axios
 sass 
 styled-components
+```
 
 ### `npm start`
 
