@@ -1,10 +1,23 @@
+// components
+import SettingsToggle from "../components/Settings";
 
 
-const Index = () => {
+const Index = ( ) => {
 
     return (
-        <h1>This is the index page</h1>
+        <div >
+            <h1>This is the index page</h1>
+            <SettingsToggle/>
+        </div>
     )
 };
 
-export default Index;
+
+
+// state.entities.settings.config
+export default Index ;
+
+/**
+ * namn: Adam Wester
+ * 
+ */
