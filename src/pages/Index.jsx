@@ -1,23 +1,21 @@
+import styled from "styled-components";
 // components
-import SettingsToggle from "../components/Settings";
 
 
-const Index = ( ) => {
+
+const Index = () => {
 
     return (
         <div >
-            <h1>This is the index page</h1>
-            <SettingsToggle/>
+            <SiteTitle>This is the index page</SiteTitle>
+
         </div>
     )
 };
 
+const SiteTitle = styled.h1`
+    color: var(--color-primary-default);
+`;
 
 
-// state.entities.settings.config
-export default Index ;
-
-/**
- * namn: Adam Wester
- * 
- */
+export default Index;
