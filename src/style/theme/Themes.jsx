@@ -66,7 +66,7 @@ allThemes.Red = createGlobalStyle`
 
 `;
 
-allThemes.Green = createGlobalStyle`
+allThemes.lime = createGlobalStyle`
 
     /* colors */
     :root {
