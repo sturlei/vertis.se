@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 
-
 const Page404 = () => {
     return (
         <div className="404-page">

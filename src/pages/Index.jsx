@@ -8,7 +8,6 @@ const Index = () => {
     return (
         <div >
             <SiteTitle>This is the index page</SiteTitle>
-
         </div>
     )
 };

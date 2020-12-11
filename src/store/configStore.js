@@ -10,7 +10,6 @@ const storeConfig = () => configureStore( {
         ...getDefaultMiddleware(),
     ],
     reducer
-
 } )
 
 export default storeConfig;
