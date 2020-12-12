@@ -23,9 +23,15 @@ allThemes.Standard = createGlobalStyle`
         --color-black-2: #141414;
         --color-black-3: #242424;
 
-         --color-gray-1: #212121;
-        --color-gray-2: #575757;
-        --color-gray-3: #acacac;
+         --color-gray-1: #2b2b2b;
+        --color-gray-2: #646464;
+        --color-gray-3: #9c9c9c;
+        --color-gray-4: #cccccc;
+        /* tint colors */
+        --color-tint-1: #e8ebf4;
+        --color-tint-2: #ececfc;
+        --color-tint-3: #ecfafc;
+        --color-tint-4: #f2ecfc;
 
         /* positive colors */
         --color-positive-1: #a0e72e;
@@ -42,13 +48,13 @@ allThemes.Red = createGlobalStyle`
 
     /* colors */
     :root {
-        --color-primary-default: #e65531;
+        --color-primary-default: #e64c31;
         --color-primary-light: #dc846e;
-        --color-primary-dark: #a93012;
+        --color-primary-dark: #a93512;
 
-        --color-secondary-default: #6bfaf3;
-        --color-secondary-light: #84e2fa;
-        --color-secondary-dark: #29b3e9;
+        --color-secondary-default: #c56bfa;
+        --color-secondary-light: #c584fa;
+        --color-secondary-dark: #ac29e9;
         
         /* shades */
         --color-white-1: #ffffff;
@@ -59,44 +65,22 @@ allThemes.Red = createGlobalStyle`
         --color-black-2: #141414;
         --color-black-3: #242424;
 
-         --color-gray-1: #212121;
-        --color-gray-2: #575757;
-        --color-gray-3: #acacac;
+         --color-gray-1: #2b2b2b;
+        --color-gray-2: #646464;
+        --color-gray-3: #9c9c9c;
+        --color-gray-4: #cccccc;
+        /* tint colors */
+        --color-tint-1: #e8ebf4;
+        --color-tint-2: #ececfc;
+        --color-tint-3: #ecfafc;
+        --color-tint-4: #f2ecfc;
 
         /* positive colors */
         --color-positive-1: #a0e72e;
-    }
-    
 
-`;
-
-allThemes.lime = createGlobalStyle`
-
-    /* colors */
-    :root {
-        --color-primary-default: #82e631;
-        --color-primary-light: #6edc7d;
-        --color-primary-dark: #5ba912;
-
-        --color-secondary-default: #6d6bfa;
-        --color-secondary-light: #8486fa;
-        --color-secondary-dark: #5329e9;
-        
-        /* shades */
-        --color-white-1: #ffffff;
-        --color-white-2: #f5f5f5;
-        --color-white-3: #ececec;
-     
-        --color-black-1: #000000;
-        --color-black-2: #141414;
-        --color-black-3: #242424;
-
-         --color-gray-1: #212121;
-        --color-gray-2: #575757;
-        --color-gray-3: #acacac;
-
-        /* positive colors */
-        --color-positive-1: #a0e72e;
+        /* shadows */
+        --text-shadow-1: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
+        --text-shadow-2: .1rem .1rem .4rem  rgba(0, 0, 0, .2);
     }
     
 
