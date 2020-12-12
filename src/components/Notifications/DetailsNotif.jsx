@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import moment from "moment";
 
 
 
 
-const Card = ( { title, description, shadow } ) => {
-
+const Card = ( { title, description, shadow, date } ) => {
+    // .format( 'MMM D YYYY' )
+    const formatedDate = date && moment( date ).format( 'MMM D YYYY' );
+    const dateCapitalized = formatedDate && formatedDate.charAt( 0 ).toUpperCase() + formatedDate.slice( 1 );
 
     return (
         <CardWarper shadow={shadow}>
@@ -22,7 +25,7 @@ const Card = ( { title, description, shadow } ) => {
                     {description}
                 </Description>
                 <DateStr>
-                    Jan 12, 2020
+                    {dateCapitalized}
                 </DateStr>
             </SecondSection>
         </CardWarper>
@@ -38,7 +41,7 @@ const CardWarper = styled.div`
 
     min-height: 12rem;
     width: 29rem;
-    padding: 2.4rem;
+    padding: 2.7rem;
     border-radius: 2.3rem;
 
     background-color: var(--color-white-1);
@@ -54,7 +57,7 @@ const FirstSection = styled.div`
 `
 const SecondSection = styled.div`
     margin-bottom: 1rem;
-    margin-right: 3.5rem;
+    margin-right: 1.8rem;
     font-size: 1.2rem;
     line-height: 1.4;
 
