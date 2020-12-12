@@ -5,9 +5,12 @@ const Page404 = () => {
     return (
         <PageWarper>
             <LeftSide>
-                <h1>The page you are looking for</h1>
-                <p>does not exist</p>
-                <p>Go back to the <Link to="/">frontpage</Link></p>
+                <Title>The page you are looking for</Title>
+                <Subtitle color="var(--color-primary-default)" fontSize="5rem">Does not exist</Subtitle>
+                <Devider />
+                <Subtitle>
+                    Go back to the <Link to="/">frontpage</Link>
+                </Subtitle>
             </LeftSide>
             <RightSide>
                 <Title404>
@@ -29,9 +32,9 @@ const PageWarper = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    /* background-image: url("/assets/404/page.svg"); */
-    background-position: center center;
-    background-size: 80% auto;
+    background-image: url("/assets/404/dots.svg");
+    background-position: right center;
+    background-size: auto 100%;
     background-repeat: no-repeat;
 `;
 const LeftSide = styled.div`
@@ -51,18 +54,41 @@ const RightSide = styled.div`
     flex: 1 1 50%;
     justify-content: center;
     align-items: center;
+    
 
 `
 const Title404 = styled.h1`
-    font-size: 20rem;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 17rem;
+    font-weight: bold;
+    text-shadow: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
     line-height: 1;
+    color: var(--color-white-1);
 
 `
 const SubTitle404 = styled.p`
 font-size: 3rem;
 line-height: 1;
+color: var(--color-gray-2);
+text-shadow: .1rem .1rem .4rem  rgba(0, 0, 0, .2);
 `
-
+const Title = styled.h1`
+    color: var(--color-gray-1);
+    font-size: 7rem;
+    line-height: 1.2;
+    `
+const Subtitle = styled.p`
+    font-size: ${( { fontSize } ) => `${fontSize || '2rem'}`};
+    color: ${( { color } ) => `${color || 'color: var(--color-gray-1)'}`};
+    line-height: 1;
+`
+const Devider = styled.div`
+    margin: .7rem 0;
+    margin-bottom: 2rem;
+    height: .2rem;
+    width: 40%;
+    background-color: var(--color-secondary-light);
+`
 
 
 export default Page404;
