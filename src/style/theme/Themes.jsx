@@ -32,6 +32,11 @@ allThemes.Standard = createGlobalStyle`
         --color-tint-2: #ececfc;
         --color-tint-3: #ecfafc;
         --color-tint-4: #f2ecfc;
+        
+        --color-tint-1-dark: #d7d9e2;
+        --color-tint-2-dark: #b7b7d3;
+        --color-tint-3-dark: #c1d3d6;
+        --color-tint-4-dark: #ccc5da;
 
         /* positive colors */
         --color-positive-1: #a0e72e;
@@ -39,6 +44,8 @@ allThemes.Standard = createGlobalStyle`
         /* shadows */
         --text-shadow-1: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
         --text-shadow-2: .1rem .1rem .4rem  rgba(0, 0, 0, .2);
+
+        --box-shadow-1: .3rem .3rem 1.3rem  rgba(0, 0, 0, .1);
     }
     
 
@@ -74,6 +81,11 @@ allThemes.Red = createGlobalStyle`
         --color-tint-2: #ececfc;
         --color-tint-3: #ecfafc;
         --color-tint-4: #f2ecfc;
+
+        --color-tint-1-dark: #cad0e4;
+        --color-tint-2-dark: #b7b7d3;
+        --color-tint-3-dark: #c1d3d6;
+        --color-tint-4-dark: #ccc5da;
 
         /* positive colors */
         --color-positive-1: #a0e72e;
