@@ -13,6 +13,7 @@ html {
 }
 
 body {
+    background-color: var(--color-white-1);
     box-sizing: border-box;
     text-rendering: optimizeSpeed;
     font-size: 1.6rem;
