@@ -29,6 +29,10 @@ allThemes.Standard = createGlobalStyle`
 
         /* positive colors */
         --color-positive-1: #a0e72e;
+
+        /* shadows */
+        --text-shadow-1: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
+        --text-shadow-2: .1rem .1rem .4rem  rgba(0, 0, 0, .2);
     }
     
 

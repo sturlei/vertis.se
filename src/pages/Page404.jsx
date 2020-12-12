@@ -9,7 +9,7 @@ const Page404 = () => {
                 <Subtitle color="var(--color-primary-default)" fontSize="5rem">Does not exist</Subtitle>
                 <Devider />
                 <Subtitle>
-                    Go back to the <Link to="/">frontpage</Link>
+                    <Link to="/">Go back to the frontpage</Link>
                 </Subtitle>
             </LeftSide>
             <RightSide>
@@ -61,7 +61,7 @@ const Title404 = styled.h1`
     font-family: 'Varela Round', sans-serif;
     font-size: 17rem;
     font-weight: bold;
-    text-shadow: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
+    text-shadow: var(--text-shadow-1);
     line-height: 1;
     color: var(--color-white-1);
 
@@ -70,7 +70,7 @@ const SubTitle404 = styled.p`
 font-size: 3rem;
 line-height: 1;
 color: var(--color-gray-2);
-text-shadow: .1rem .1rem .4rem  rgba(0, 0, 0, .2);
+text-shadow: var(--text-shadow-2);
 `
 const Title = styled.h1`
     color: var(--color-gray-1);
