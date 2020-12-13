@@ -1,15 +1,26 @@
 import styled from "styled-components";
 
+
 // components
-import DetailsNotif from "../components/Notifications/DetailsNotif";
+// import ScoreBar from "../components/Score/ScoreBar";
 
 const TestPage = () => {
 
 
-
     return (
         <PageContainer>
-            <DetailsNotif title="Payment" description="This is a dummy message to emulate a notification" shadow />
+            {/* <DetailsNotif
+                title="Payment"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                shadow
+                date={Date.now()}
+            /> */}
+            {/* <IconBars items={barItems} active={1} shadow /> */}
+            {/* <ScoreBar procent={70}
+                textOne="Your score"
+                description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, vitae!"
+            /> */}
+
         </PageContainer>
 
     )
