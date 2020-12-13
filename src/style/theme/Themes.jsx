@@ -39,7 +39,7 @@ allThemes.Standard = createGlobalStyle`
         --color-tint-4-dark: #ccc5da;
 
         /* positive colors */
-        --color-positive-1: #a0e72e;
+        --color-positive-1: #2ee747;
 
         /* shadows */
         --text-shadow-1: .2rem .2rem 1rem  rgba(0, 0, 0, .3);
