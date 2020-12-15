@@ -3,9 +3,18 @@ import styled from "styled-components";
 
 // components
 // import ScoreBar from "../components/Score/ScoreBar";
-
+import NotificationList from "../components/Notifications/NotificationList";
 const TestPage = () => {
-
+    const notifications = [
+        {
+            name: 'Att ringa',
+            number: 2
+        },
+        {
+            name: 'Glöm inte spara',
+            number: 8
+        },
+    ]
 
     return (
         <PageContainer>
@@ -20,7 +29,7 @@ const TestPage = () => {
                 textOne="Your score"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, vitae!"
             /> */}
-
+            <NotificationList items={notifications} />
         </PageContainer>
 
     )
