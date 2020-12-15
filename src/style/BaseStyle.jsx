@@ -34,7 +34,7 @@ a {
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
