@@ -59,7 +59,7 @@ const ItemContainer = styled.div`
         background-color: var(--color-white-2);
 
     }
-    &:Before {
+    &:before {
         content: '';
         position: absolute;
         left: 0;
