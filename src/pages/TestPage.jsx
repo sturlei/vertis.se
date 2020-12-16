@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 
@@ -5,6 +6,7 @@ import styled from "styled-components";
 // import ScoreBar from "../components/Score/ScoreBar";
 import NotificationList from "../components/Notifications/NotificationList";
 const TestPage = () => {
+    const [active, setActive] = useState( -1 );
     const notifications = [
         {
             name: 'Att ringa',
@@ -29,7 +31,12 @@ const TestPage = () => {
                 textOne="Your score"
                 description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, vitae!"
             /> */}
-            <NotificationList items={notifications} />
+            <NotificationList
+                items={notifications}
+                active={active}
+                close={setActive}
+                open={setActive}
+            />
         </PageContainer>
 
     )
