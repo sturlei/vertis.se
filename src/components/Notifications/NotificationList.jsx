@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 
 
 
-const NotificationList = ( { items } ) => {
-
-
+const NotificationList = ( props ) => {
+    const { items, active, close, open } = props;
 
     return (
         <NotificationContainer>
@@ -13,14 +13,53 @@ const NotificationList = ( { items } ) => {
                 <NotificationHeaderTitle>
                     Notification
                 </NotificationHeaderTitle>
+                <NotificationOptionsHolder>
+                    <NotificationOptions >
+                        <use href="#menu" />
+                    </NotificationOptions>
+                </NotificationOptionsHolder>
             </NotificationHeader>
-            <NotificationBody>
-                {items && items.map( ( item, ind ) => (
-                    <ItemContainer {...item} number={item.number} key={ind} name={undefined}>
-                        {item.name}
-                    </ItemContainer>
-                ) )}
-            </NotificationBody>
+            <AnimatePresence exitBeforeEnter>
+                {active !== -1 ? (
+                    <ItemDetails
+                        onClick={() => close( -1 )}
+                        key="details"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                            opacity: {
+                                duration: .2
+                            }
+                        }}
+                    >
+                        {items[active].name}
+                    </ItemDetails>
+                ) : (
+                        <NotificationBody
+                            key="list"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{
+                                opacity: {
+                                    duration: .2
+                                }
+                            }}
+                        >
+                            {items && items.map( ( item, ind ) => (
+                                <ItemContainer {...item} number={item.number} key={ind} name={undefined} onClick={open && (
+                                    () => open( ind )
+                                )}>
+                                    <ItemLabel>
+                                        {item.name}
+                                    </ItemLabel>
+                                </ItemContainer>
+                            ) )}
+                        </NotificationBody>
+                    )}
+            </AnimatePresence>
+
         </NotificationContainer>
     )
 };
@@ -37,14 +76,43 @@ const NotificationContainer = styled.div`
     flex-direction: column;
 `;
 const NotificationHeader = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
     margin-bottom: 1.3rem;
 `
-const NotificationBody = styled.div`
+const NotificationBody = styled( motion.div )`
     overflow: auto;
     width: 100%;
 `
+const NotificationOptionsHolder = styled.div`
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    &:hover svg {
+        fill: var(--color-gray-3);
+
+    }
+    
+`;
+const NotificationOptions = styled.svg`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--color-gray-4);
+    transition: all .1s ease;
+   
+`;
 const NotificationHeaderTitle = styled.h1`
+flex: 1 1 auto;
     font-size: 1.7rem;
     font-weight: 600;
 `;
@@ -53,11 +121,10 @@ const ItemContainer = styled.div`
     padding: 1.1rem 0;
     font-size:1.35rem;
     cursor: pointer;
-    transition: all .2s ease;
+    transition: all .1s ease;
     border-radius: .3rem;
-    &:hover {
-        background-color: var(--color-white-2);
-
+    &:hover p {
+        transform: translateX(1rem);
     }
     &:before {
         content: '';
@@ -81,5 +148,15 @@ const ItemContainer = styled.div`
         border-radius: .7rem;
     }
 `;
+const ItemLabel = styled.p`
+    transition: all .2s ease;
+    width: fit-content;
+`;
+const ItemDetails = styled( motion.div )`
+    width: 100%;
+    height: 100%;
+    background-color: red;
+
+`
 
 export default NotificationList;
