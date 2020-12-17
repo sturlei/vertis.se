@@ -10,11 +10,18 @@ const TestPage = () => {
     const notifications = [
         {
             name: 'Att ringa',
-            number: 2
+            number: 2,
+            list: [
+                {subject: 'Vasil Bygg AB', message: 'Kontakta kunden, vill ha hjälp med hemsidan.'},
+                {subject: 'Marshala', message: 'Jabadaba du'},
+            ]
         },
         {
-            name: 'Glöm inte spara',
-            number: 8
+            name: 'Att göra',
+            number: 8,
+             list: [
+                {subject: 'Content Writer', message: 'Hitta en anställd asap'}
+            ]
         },
     ]
 
