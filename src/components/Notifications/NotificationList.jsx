@@ -33,7 +33,12 @@ const NotificationList = ( props ) => {
                             }
                         }}
                     >
-                        {items[active].name}
+                        {items[active].list && items[active].list.map( ( listItem, ind ) => (
+                            <div key={ind + '_listItems'}>
+                                <h4>{listItem.subject}</h4>
+                                <p>{listItem.message}</p>
+                            </div>
+                        ))}
                     </ItemDetails>
                 ) : (
                         <NotificationBody
@@ -155,7 +160,7 @@ const ItemLabel = styled.p`
 const ItemDetails = styled( motion.div )`
     width: 100%;
     height: 100%;
-    background-color: red;
+
 
 `
 
