@@ -10,11 +10,13 @@ const TestPage = () => {
     const [notifications, setNotifications] = useState( [
         {
             name: 'Att ringa',
-
             list: [
                 { subject: 'Vasil Bygg AB', message: 'Kontakta kunden, vill ha hjälp med hemsidan.' },
                 { subject: 'Marshala', message: 'Jabadaba du' },
-                { subject: 'Ny kund', message: 'ny kund som vill utöka...' },
+                { subject: 'Ny kunds', message: 'ny kun som vill utöka...' },
+                { subject: 'Ny kundsa', message: 'ny kund sm vill utöka...' },
+                { subject: 'Ny kundsf', message: 'ny kund som vill töka...' },
+                { subject: 'Ny kundd', message: 'ny kund som vill utöa...' },
             ]
         },
         {
