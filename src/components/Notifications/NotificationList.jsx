@@ -5,7 +5,16 @@ import styled from "styled-components";
 
 
 const NotificationList = ( props ) => {
-    const { items, active, close, open } = props;
+    const { items, active, close, open, removeItem } = props;
+
+    const animation = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        transition: {
+            opacity: { duration: .2 }
+        }
+    }
 
     return (
         <NotificationContainer>
@@ -14,46 +23,60 @@ const NotificationList = ( props ) => {
                     Notification
                 </NotificationHeaderTitle>
                 <NotificationOptionsHolder>
-                    <NotificationOptions >
+                    <AnimatePresence exitBeforeEnter>
+                        {active !== -1 && (
+                            <NotificationOptionsClose
+                                key="close"
+                                onClick={() => close( -1 )}
+                                {...animation}
+                            >
+                                <use href="#back" />
+                            </NotificationOptionsClose>
+                        )}
+                    </AnimatePresence>
+                    <NotificationOptionsMore >
                         <use href="#menu" />
-                    </NotificationOptions>
+                    </NotificationOptionsMore>
                 </NotificationOptionsHolder>
             </NotificationHeader>
             <AnimatePresence exitBeforeEnter>
                 {active !== -1 ? (
                     <ItemDetails
-                        onClick={() => close( -1 )}
                         key="details"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{
-                            opacity: {
-                                duration: .2
-                            }
-                        }}
+                        {...animation}
                     >
-                        {items[active].list && items[active].list.map( ( listItem, ind ) => (
-                            <div key={ind + '_listItems'}>
-                                <h4>{listItem.subject}</h4>
-                                <p>{listItem.message}</p>
-                            </div>
-                        ))}
+
+                        <AnimatePresence >
+                            {items[active].list && items[active].list.map( ( listItem, ind ) => (
+                                <ItemDetailsItem key={listItem.message + '_listItems'}
+                                    initial={{ height: 'initial', scaleY: 1, }}
+                                    animate={{ height: 'initial', scaleY: 1, }}
+                                    exit={{ height: '0rem', scaleY: 0, }}
+                                    transition={{ duration: 3, marginBottom: '0rem', borderBottom: '0 solid transparent' }}
+                                >
+                                    <ItemDetailsItemRemove
+                                        onClick={() => removeItem && removeItem( ind )}
+                                    >
+                                        <use href="#close" />
+                                    </ItemDetailsItemRemove>
+                                    <ItemDetailsItemTitle>
+                                        {listItem.subject}
+                                    </ItemDetailsItemTitle>
+                                    <ItemDetailsItemSubject>
+                                        {listItem.message}
+                                    </ItemDetailsItemSubject>
+                                </ItemDetailsItem>
+                            ) )}
+                        </AnimatePresence>
                     </ItemDetails>
                 ) : (
                         <NotificationBody
                             key="list"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{
-                                opacity: {
-                                    duration: .2
-                                }
-                            }}
+                            {...animation}
                         >
+
                             {items && items.map( ( item, ind ) => (
-                                <ItemContainer {...item} number={item.number} key={ind} name={undefined} onClick={open && (
+                                <ItemContainer {...item} number={item.list.length} key={ind} name={undefined} onClick={open && (
                                     () => open( ind )
                                 )}>
                                     <ItemLabel>
@@ -95,16 +118,20 @@ const NotificationOptionsHolder = styled.div`
     position: absolute;
     top: 0;
     right: 1rem;
-    width: fit-content;
+    display: flex;
+    flex: 1 0 auto;
+
     height: fit-content;
-    cursor: pointer;
-    &:hover svg {
+    & :not(:last-child) {
+        margin-right: 1rem;
+    }
+    & svg:hover {
         fill: var(--color-gray-3);
 
     }
     
 `;
-const NotificationOptions = styled.svg`
+const NotificationOptionsMore = styled.svg`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,8 +141,16 @@ const NotificationOptions = styled.svg`
     height: 2rem;
     fill: var(--color-gray-4);
     transition: all .1s ease;
+    cursor: pointer;
    
 `;
+const NotificationOptionsClose = styled( motion.svg )`
+    width: 2rem;
+    height: 2rem;
+    fill: var(--color-gray-4);
+    cursor: pointer;
+
+`
 const NotificationHeaderTitle = styled.h1`
 flex: 1 1 auto;
     font-size: 1.7rem;
@@ -160,8 +195,37 @@ const ItemLabel = styled.p`
 const ItemDetails = styled( motion.div )`
     width: 100%;
     height: 100%;
-
+    overflow: auto;
+    & > :not(:last-child) {
+        margin-bottom: .7rem;
+    }
 
 `
+const ItemDetailsItem = styled( motion.div )`
+    position: relative;
+    padding: .3rem 1rem;
+`;
+const ItemDetailsItemRemove = styled.svg`
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--color-gray-4);
+    cursor: pointer;
+    transition: all .1s ease;
+    &:hover {
+        fill: var(--color-gray-3);
+    }
+`;
+const ItemDetailsItemTitle = styled.h1`
+    font-size: 1.5rem;
+`;
+const ItemDetailsItemSubject = styled.p`
+    font-size: 1.3rem;
+`;
+
+
 
 export default NotificationList;
