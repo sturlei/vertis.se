@@ -49,10 +49,14 @@ const NotificationList = ( props ) => {
                         <AnimatePresence >
                             {items[active].list && items[active].list.map( ( listItem, ind ) => (
                                 <ItemDetailsItem key={listItem.message + '_listItems'}
-                                    initial={{ height: 'initial', scaleY: 1, }}
+
                                     animate={{ height: 'initial', scaleY: 1, }}
-                                    exit={{ height: '0rem', scaleY: 0, }}
-                                    transition={{ duration: 3, marginBottom: '0rem', borderBottom: '0 solid transparent' }}
+
+                                    exit={{
+                                        height: '0px', scaleY: 0,
+                                        marginBottom: '0px',
+                                    }}
+                                    transition={{ duration: 0.3, }}
                                 >
                                     <ItemDetailsItemRemove
                                         onClick={() => removeItem && removeItem( ind )}
@@ -197,13 +201,13 @@ const ItemDetails = styled( motion.div )`
     height: 100%;
     overflow: auto;
     & > :not(:last-child) {
-        margin-bottom: .7rem;
+        margin-bottom: 1.2rem;
     }
 
 `
 const ItemDetailsItem = styled( motion.div )`
     position: relative;
-    padding: .3rem 1rem;
+    padding: 0rem 1rem;
 `;
 const ItemDetailsItemRemove = styled.svg`
     position: absolute;
