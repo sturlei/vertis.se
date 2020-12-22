@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // components
 // import ScoreBar from "../components/Score/ScoreBar";
-import NotificationList from "../components/Notifications/NotificationList";
+// import NotificationList from "../components/Notifications/NotificationList";
 const TestPage = () => {
     // const [active, setActive] = useState( -1 );
     // const [notifications, setNotifications] = useState( [
