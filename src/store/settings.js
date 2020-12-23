@@ -38,6 +38,7 @@ const slice = createSlice( {
     name: 'settings',
     initialState: {
         loading: false,
+        showSettings: false,
         config: ls.get( 'settings' ),
     },
     reducers: {
@@ -50,8 +51,15 @@ const slice = createSlice( {
             localSettings.themes.currentTheme = action.payload;
             ls.set( 'settings', localSettings )
             state.config = localSettings
+        },
+        triggerSettings: ( state, action ) => {
+            if ( !action.payload )
+                state.showSettings = !state.showSettings;
+            else
+                state.showSettings = action.payload
+
         }
-    }
+    },
 } );
 
 
