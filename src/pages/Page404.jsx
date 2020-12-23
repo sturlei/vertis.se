@@ -71,6 +71,7 @@ font-size: 3rem;
 line-height: 1;
 color: var(--color-gray-2);
 text-shadow: var(--text-shadow-2);
+
 `
 const Title = styled.h1`
     color: var(--color-gray-1);
@@ -79,8 +80,9 @@ const Title = styled.h1`
     `
 const Subtitle = styled.p`
     font-size: ${( { fontSize } ) => `${fontSize || '2rem'}`};
-    color: ${( { color } ) => `${color || 'color: var(--color-gray-1)'}`};
+    color: ${( { color } ) => color || 'var(--color-gray-1)'};
     line-height: 1;
+    
 `
 const Devider = styled.div`
     margin: .7rem 0;

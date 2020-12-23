@@ -12,9 +12,16 @@ const Index = ( { entities, currentTheme, changeTheme } ) => {
     return (
         <PageWrapper>
             <FirstSection>
-                <FirstTitle onClick={()=> currentTheme === 'Red' ? changeTheme('Standard') : changeTheme('Red')  }>
+                
+                <FirstTitle>
                     Current theme is <ColorText >{currentTheme}</ColorText>
                 </FirstTitle>
+                <p>
+                    Would you like to change the theme?
+                </p>
+                <p>
+                    Click on the GEAR icon on the bottom right corner.
+                </p>
             </FirstSection>
 
         </PageWrapper>
@@ -40,8 +47,9 @@ const FirstTitle = styled.h1`
 const FirstSection = styled.div`
     padding: 10rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: var(--color-white-1);
     width: 100%;
     height: 80vh;
