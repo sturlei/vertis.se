@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 
-const IconBars = ( { items, active, shadow } ) => {
-
+const IconBars = ( props ) => {
+    const { items, active, shadow } = props
 
     return (
-        <IconBarsContainer shadow={shadow}>
+        <IconBarsContainer {...props} shadow={shadow}>
             {items && items.map( ( currentItem, ind ) => (
                 <Item key={ind} {...currentItem}>
                     {currentItem.icon && (
@@ -24,7 +25,7 @@ const IconBars = ( { items, active, shadow } ) => {
     )
 };
 
-const IconBarsContainer = styled.div`
+const IconBarsContainer = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +33,7 @@ const IconBarsContainer = styled.div`
     background-color: var(--color-white-1);
     padding: 2rem 3rem;
     border-radius: 1.5rem;
+    user-select: none;
     ${( { shadow } ) => shadow && `box-shadow: var(--box-shadow-1);`}
     & > :not(:last-child) {
         margin-right: 4rem;
