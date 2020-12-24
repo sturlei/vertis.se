@@ -21,13 +21,15 @@ const SettingsMiniPage = ( { settings, allThemes, currentTheme, changeTheme } ) 
                                 <SelectValueOption key={ind} value={themeItem}>{themeItem}</SelectValueOption>
                             ) )}
                         </SelectValue>
+                        <ColorPalletsHolder>
+                            <ColorPallets color="--color-primary-dark" />
+                            <ColorPallets color="--color-primary-default" />
+                            <ColorPallets color="--color-primary-light" />
+                            <ColorPallets color="--color-secondary-dark" />
+                            <ColorPallets color="--color-secondary-default" />
+                            <ColorPallets color="--color-secondary-light" />
+                        </ColorPalletsHolder>
                     </RowSettingsContainer>
-                    <ColorPallets color="--color-primary-dark" />
-                    <ColorPallets color="--color-primary-default" />
-                    <ColorPallets color="--color-primary-light" />
-                    <ColorPallets color="--color-secondary-dark" />
-                    <ColorPallets color="--color-secondary-default" />
-                    <ColorPallets color="--color-secondary-light" />
                 </RowSettings>
             </SettingsItem>
         </Wrapper>
@@ -87,7 +89,15 @@ const RowSettingsTitle = styled.p`
 
 `
 const RowSettingsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    & > :not(:last-child){
+        margin-bottom: .4rem;
+    }
+   
 `
 
 const SelectValue = styled.select`
@@ -105,13 +115,20 @@ const SelectValue = styled.select`
     
 `
 const SelectValueOption = styled.option``
-
+const ColorPalletsHolder = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 const ColorPallets = styled.div`
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 100%;
     background-color: ${( { color } ) => `var(${color})`};
     transition: all .2s ease;
+    &:not(:last-child) {
+        margin-right: .25rem;
+    }
 `;
 
 
