@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import {  motion} from "framer-motion";
+import { motion } from "framer-motion";
 // styles
 import BaseStyle from "./style/BaseStyle";
 import GlobalVariables from "./style/GlobalVariables";
@@ -14,14 +15,20 @@ import SVG from "./components/SVG/SVG";
 // minipages
 import SettingsMiniPage from "./miniPages/Settings";
 // actions
-import { actions } from "./store/settings";
+import { actions as settingsActions } from "./store/settings";
+import * as apiActions from "./store/apiActions";
+import { actions as usersActions } from "./store/users";
 
 function App( props ) {
-  const { children, triggerSettings, showSettings } = props;
+  const { children, triggerSettings, showSettings, getUsers } = props;
   const CurrnetTheme = Themes[props.settings.config.themes.currentTheme];
 
+  useEffect( () => {
+    getUsers()
+  }, [getUsers] )
+
   return (
-    <div className="App"  >
+    <div className="App" >
       <BaseStyle />
       <GlobalVariables />
       <CurrnetTheme />
@@ -30,22 +37,22 @@ function App( props ) {
 
         {showSettings ? (
           <SettingsPanel>
-              <ClosePanel onClick={()=> triggerSettings(false)}>
+            <ClosePanel onClick={() => triggerSettings( false )}>
               <SVG icon="close" />
-              </ClosePanel>
-          <SettingsMiniPage />
-        </SettingsPanel>
+            </ClosePanel>
+            <SettingsMiniPage />
+          </SettingsPanel>
         ) : (
             <IconBars shadow items={[{
-                    icon: 'settings',
-                    name: 'Settings',
-                    onClick: ()=> triggerSettings()
-                }]}/>
-        )}
+              icon: 'settings',
+              name: 'Settings',
+              onClick: () => triggerSettings()
+            }]} />
+          )}
 
 
-       
-      
+
+
       </PositioningAbsolute>
       {children}
     </div>
@@ -56,7 +63,7 @@ const PositioningAbsolute = styled.div`
   bottom: 3rem;
   right: 3rem;
 `;
-const SettingsPanel = styled(motion.div)`
+const SettingsPanel = styled( motion.div )`
   position: absolute;
   bottom: 0;
   right: 0;
@@ -87,10 +94,17 @@ const ClosePanel = styled.div`
 // state.entities.settings.config
 const mapStateToProps = ( state ) => ( {
   settings: state.entities.settings,
-  showSettings: state.entities.settings.showSettings
+  showSettings: state.entities.settings.showSettings,
+  users: state.entities.users
 } );
 const mapDispatchToProps = ( dispatch ) => ( {
-  triggerSettings: ()=> dispatch( actions.triggerSettings() )
+  triggerSettings: () => dispatch( settingsActions.triggerSettings() ),
+  getUsers: () => dispatch( apiActions.apiCallBegan( {
+    url: 'users',
+    onStart: usersActions.loadingBegan.type,
+    onSuccess: usersActions.saveUsers.type,
+    onError: usersActions.loadingDone.type
+  } ) )
 } )
 
 export default connect( mapStateToProps, mapDispatchToProps )( withRouter( App ) );
