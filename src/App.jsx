@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // styles
 import BaseStyle from "./style/BaseStyle";
 import GlobalVariables from "./style/GlobalVariables";
@@ -21,7 +21,7 @@ import * as apiActions from "./store/apiActions";
 import { actions as usersActions } from "./store/users";
 
 function App( props ) {
-  const { children, triggerSettings, showSettings, getUsers } = props;
+  const { children, triggerSettings, showSettings, getUsers, firstTime } = props;
   const CurrnetTheme = Themes[props.settings.config.themes.currentTheme];
 
   useEffect( () => {
@@ -34,7 +34,17 @@ function App( props ) {
       <GlobalVariables />
       <CurrnetTheme />
       <SpriteOneCollection />
-      <WellcomePage />
+      <AnimatePresence exitBeforeEnter>
+        {firstTime && (
+          <WellcomePage exit={{
+            opacity: 0,
+            scale: .9,
+            transition: {
+              opacity: .2, scale: '1.2s'
+            }
+          }} />
+        )}
+      </AnimatePresence>
       <PositioningAbsolute>
         {showSettings ? (
           <SettingsPanel>
@@ -94,7 +104,8 @@ const ClosePanel = styled.div`
 const mapStateToProps = ( state ) => ( {
   settings: state.entities.settings,
   showSettings: state.entities.settings.showSettings,
-  users: state.entities.users
+  users: state.entities.users,
+  firstTime: state.entities.settings.firstTime
 } );
 const mapDispatchToProps = ( dispatch ) => ( {
   triggerSettings: () => dispatch( settingsActions.triggerSettings() ),
