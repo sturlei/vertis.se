@@ -15,9 +15,7 @@ const api = ( {
         onSuccess,
         onError
     } = action.payload;
-    console.log( {
-        ...action.payload
-    } );
+
     if ( onStart ) dispatch( {
         type: onStart
     } )

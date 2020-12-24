@@ -9,8 +9,19 @@ const slice = createSlice( {
         list: []
     },
     reducers: {
+        loadingBegan: ( state, action ) => {
+            state.loading = true;
+        },
+        loadingDone: ( state, action ) => {
+            state.loading = false;
+        },
+        saveUsers: ( state, action ) => {
+            state.list = [ ...action.payload ]
+            state.loading = false;
+        }
+
 
     }
 } )
-
+export const actions = slice.actions
 export default slice.reducer
