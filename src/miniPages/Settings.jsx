@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 // actions
 import { actions as settingsActions } from "../store/settings";
 
-const SettingsMiniPage = ({settings, allThemes, currentTheme, changeTheme}) => {
+const SettingsMiniPage = ( { settings, allThemes, currentTheme, changeTheme } ) => {
 
-console.log(settings,allThemes);
+
     return (
         <Wrapper>
             <SettingsItem>
@@ -16,18 +16,18 @@ console.log(settings,allThemes);
                         Active theme
                     </RowSettingsTitle>
                     <RowSettingsContainer>
-                        <SelectValue value={currentTheme}  onChange={(e) => changeTheme(e.target.value)}>
+                        <SelectValue value={currentTheme} onChange={( e ) => changeTheme( e.target.value )}>
                             {allThemes.map( ( themeItem, ind ) => (
                                 <SelectValueOption key={ind} value={themeItem}>{themeItem}</SelectValueOption>
-                            ))}
+                            ) )}
                         </SelectValue>
                     </RowSettingsContainer>
-                        <ColorPallets color="--color-primary-dark"/>
-                        <ColorPallets color="--color-primary-default"/>
-                        <ColorPallets color="--color-primary-light"/>
-                        <ColorPallets color="--color-secondary-dark"/>
-                        <ColorPallets color="--color-secondary-default"/>
-                        <ColorPallets color="--color-secondary-light"/>
+                    <ColorPallets color="--color-primary-dark" />
+                    <ColorPallets color="--color-primary-default" />
+                    <ColorPallets color="--color-primary-light" />
+                    <ColorPallets color="--color-secondary-dark" />
+                    <ColorPallets color="--color-secondary-default" />
+                    <ColorPallets color="--color-secondary-light" />
                 </RowSettings>
             </SettingsItem>
         </Wrapper>
@@ -37,12 +37,12 @@ console.log(settings,allThemes);
 const Wrapper = styled.div`
 `;
 
-const DeviderText = ( {title} ) => { 
+const DeviderText = ( { title } ) => {
     return (
         <DevContainer>
             <DevLines />
             <DevText>{title}</DevText>
-            <DevLines />           
+            <DevLines />
         </DevContainer>
     )
 }
@@ -110,7 +110,7 @@ const ColorPallets = styled.div`
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 100%;
-    background-color: ${( { color } ) => `var(${color})` };
+    background-color: ${( { color } ) => `var(${color})`};
     transition: all .2s ease;
 `;
 
@@ -121,7 +121,7 @@ const mapStateToProps = ( state ) => ( {
     currentTheme: state.entities.settings.config.themes.currentTheme,
 } );
 const mapDispatchToProps = ( dispatch ) => ( {
-    changeTheme: (theme)=> dispatch(settingsActions.changeTheme(theme))
+    changeTheme: ( theme ) => dispatch( settingsActions.changeTheme( theme ) )
 } )
 
-export default connect(mapStateToProps,mapDispatchToProps )(SettingsMiniPage);
+export default connect( mapStateToProps, mapDispatchToProps )( SettingsMiniPage );
