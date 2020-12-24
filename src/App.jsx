@@ -14,6 +14,7 @@ import IconBars from "./components/Bars/IconBars";
 import SVG from "./components/SVG/SVG";
 // minipages
 import SettingsMiniPage from "./miniPages/Settings";
+import WellcomePage from "./miniPages/Wellcome";
 // actions
 import { actions as settingsActions } from "./store/settings";
 import * as apiActions from "./store/apiActions";
@@ -33,8 +34,8 @@ function App( props ) {
       <GlobalVariables />
       <CurrnetTheme />
       <SpriteOneCollection />
-      <PositioningAbsolute >
-
+      <WellcomePage />
+      <PositioningAbsolute>
         {showSettings ? (
           <SettingsPanel>
             <ClosePanel onClick={() => triggerSettings( false )}>
@@ -49,8 +50,6 @@ function App( props ) {
               onClick: () => triggerSettings()
             }]} />
           )}
-
-
 
 
       </PositioningAbsolute>
