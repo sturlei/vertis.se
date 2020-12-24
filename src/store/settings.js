@@ -39,6 +39,7 @@ const slice = createSlice( {
     initialState: {
         loading: false,
         showSettings: false,
+        firstTime: ls.get( 'firstTime' ) !== null ? ls.get( 'firstTime' ) : true,
         config: ls.get( 'settings' ),
     },
     reducers: {
@@ -58,10 +59,13 @@ const slice = createSlice( {
             else
                 state.showSettings = action.payload
 
+        },
+        setFirstTimeState: ( state, action ) => {
+            state.firstTime = action.payload
+            ls.set( 'firstTime', false )
         }
     },
 } );
-
 
 
 export const actions = slice.actions;
