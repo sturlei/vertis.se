@@ -64,11 +64,36 @@ const MeterValueCircle = styled.div`
     left: 0;
     width: var(--meter-size);
     height: var(--meter-size);
-    ${( { procent } ) => procent && `
+    /* ${( { procent } ) => procent && `
     background-image: linear-gradient( ${( 180 / 100 ) * procent}deg, var(--color-positive-1) 50%, transparent 50.1% ) ,url("/assets/other/circle_load_2.svg");
     `
-    };
+    }; */
+    background-image: linear-gradient( ${( 180 / 100 ) * 100}deg, var(--color-positive-1) 50%, transparent 50.1% ) ;
+    transition: all .05s ease;
+    clip-path: ${( { procent } ) => {
 
+        let threeDot = [0, 0];
+        let fourDot = [0, 50];
+
+        if ( fourDot[0] === 100 )
+            threeDot[0] = 100
+
+        if ( procent <= 33.33333 )
+            fourDot[1] = Math.round( 50 - ( procent * 1.5000015000015 ) )
+
+        else if ( procent <= 66.66666666666666 ) {
+            fourDot[1] = 0;
+            fourDot[0] = Math.round( ( procent - 33.333333 ) * 3.000003000003 )
+        }
+
+        if ( procent >= 66.66666666666666 ) {
+            threeDot[0] = 100
+            fourDot[0] = 100
+            fourDot[1] = procent - 50
+        }
+
+        return `polygon(0 50%, 0 0, ${threeDot[0]}% ${threeDot[1]}%, ${fourDot[0]}% ${fourDot[1]}%, 50% 50%)`;
+    }};
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100%;
