@@ -68,9 +68,12 @@ const MeterValueCircle = styled.div`
     background-image: linear-gradient( ${( 180 / 100 ) * procent}deg, var(--color-positive-1) 50%, transparent 50.1% ) ,url("/assets/other/circle_load_2.svg");
     `
     }; */
-    background-image: linear-gradient( ${( 180 / 100 ) * 100}deg, var(--color-positive-1) 50%, transparent 50.1% ) ;
-    transition: all .05s ease;
+    animation: bgCahnges 6s ease infinite alternate-reverse;
+    transition: all .1s ease;
     clip-path: ${( { procent } ) => {
+        const firstThirds = 33.33333;
+        const twoThirds = 66.66666666666666;
+        const procentThirds = 1.5000015000015
 
         let threeDot = [0, 0];
         let fourDot = [0, 50];
@@ -78,18 +81,20 @@ const MeterValueCircle = styled.div`
         if ( fourDot[0] === 100 )
             threeDot[0] = 100
 
-        if ( procent <= 33.33333 )
-            fourDot[1] = Math.round( 50 - ( procent * 1.5000015000015 ) )
+        if ( procent <= firstThirds )
+            fourDot[1] = Math.round( 50 - ( procent * procentThirds ) )
 
-        else if ( procent <= 66.66666666666666 ) {
+        else if ( procent <= twoThirds ) {
             fourDot[1] = 0;
-            fourDot[0] = Math.round( ( procent - 33.333333 ) * 3.000003000003 )
+            const value = Math.round( ( procent - firstThirds ) * 3 );
+            threeDot[0] = value
+            fourDot[0] = value
         }
 
-        if ( procent >= 66.66666666666666 ) {
+        if ( procent >= twoThirds ) {
             threeDot[0] = 100
             fourDot[0] = 100
-            fourDot[1] = procent - 50
+            fourDot[1] = Math.round( ( procent - twoThirds ) * procentThirds )
         }
 
         return `polygon(0 50%, 0 0, ${threeDot[0]}% ${threeDot[1]}%, ${fourDot[0]}% ${fourDot[1]}%, 50% 50%)`;
