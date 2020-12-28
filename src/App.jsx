@@ -68,7 +68,7 @@ function App( props ) {
   );
 }
 const PositioningAbsolute = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 3rem;
   right: 3rem;
 `;
