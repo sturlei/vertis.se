@@ -82,7 +82,7 @@ const FirstSection = styled.div`
     background-image: url("/assets/other/background_2.jpg");
     background-position: 20% center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
 
 `;
 const SecondSection = styled.div`
