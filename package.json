@@ -28,7 +28,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "bnu": "react-scripts build; node uploadToServer.js"
+    "bnu": "react-scripts build; node uploadToServer.js",
+    "upload": "node uploadToServer.js"
   },
   "eslintConfig": {
     "extends": [

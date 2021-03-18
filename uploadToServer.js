@@ -2,11 +2,12 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const chalk = require( 'chalk' );
 const Client = require( 'ssh2-sftp-client' );
+const username = require( "os" ).userInfo().username;
 const vertis = new Client();
 
 const buildFolderName = 'build'
 // remote folder
-const siteDir = '/home/sturlei/homepages'
+const siteDir = '/home/sturlei/webpages/vertis.se'
 const remoteBuildDir = path.join( siteDir, buildFolderName );
 const remoteTempBuildDir = path.join( siteDir, `${buildFolderName}_temp` );
 
@@ -18,9 +19,9 @@ const init = async () => {
 
         await vertis.connect( {
             host: 'vertis.se',
-            port: '2244',
+            port: '4244',
             username: 'sturlei',
-            privateKey: fs.readFileSync( path.join( '/Users/sturlei/Dropbox/ssh key/vertis.se/root', 'id_rsa' ) ),
+            privateKey: fs.readFileSync( path.join( `/Users/${username}/Dropbox/ssh key/vertis.se/root`, 'id_rsa' ) ),
 
 
         } )
